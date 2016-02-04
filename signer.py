@@ -23,7 +23,7 @@ public_keys = [PublicKey.from_bytes(server_pubkey).compressed_bytes, PublicKey.f
 redeem_script = Script.build_multisig_redeem(2, public_keys)
 
 for i, inp in enumerate(tx.inputs):
-   payment_tx.sign_input(i, bitcoin.Transaction.SIG_HASH_ALL, private_key, redeem_script)
+   tx.sign_input(i, bitcoin.Transaction.SIG_HASH_ALL, private_key, redeem_script)
 
 txid = provider.broadcast_transaction(tx.to_hex())
 
